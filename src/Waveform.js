@@ -6,8 +6,7 @@ export function Waveform({ transcript }) {
   const { audio, state } = useAppCtx();
   const ref = React.useRef();
 
-
-  console.log('state.duration', state.duration)
+  console.log("state.duration", state.duration);
 
   const progress = (state.time / state.duration) * 100;
 
@@ -44,18 +43,18 @@ export function Waveform({ transcript }) {
         <div
           className="waveform__progress"
           style={{ width: isNaN(progress) ? 0 : `${progress}%` }}
-        ></div>
+        />
         {waveforms.map((wave, i) => (
           <div
             key={i}
-            className={`waveform__item ${
-              i % 2 === 0 ? "you" : "prospect"
-            } ${state.time > wave.endTime ? 'played' : ''}`}
+            className={`waveform__item ${i % 2 === 0 ? "you" : "prospect"} ${
+              state.time > wave.endTime ? "played" : ""
+            }`}
             style={{
               left: `${wave.start}%`,
               width: `${wave.length}%`,
             }}
-          ></div>
+          />
         ))}
       </div>
     </div>

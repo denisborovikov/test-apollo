@@ -11,8 +11,6 @@ import { AppCtx } from "./context";
 const AUDIO =
   "https://zenprospect-production.s3.amazonaws.com/uploads/phone_call/uploaded_content/59e106639d79684277df770d.wav";
 
-//
-
 export const playbackRates = [0.5, 1, 1.5, 2];
 
 const initialState = {
@@ -130,6 +128,8 @@ export default function App() {
     instance.addEventListener("play", handleEvent);
     return () => instance.removeEventListener("play", handleEvent);
   }, [audio]);
+
+  if (state.duration === 0) return null;
 
   return (
     <AppCtx.Provider value={globalState}>
