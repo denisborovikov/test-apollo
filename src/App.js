@@ -32,7 +32,10 @@ function reducer(state, { type, payload }) {
       return { ...state, isPlaying: true };
 
     case "cycleRate": {
-      return { ...state, rate: state.rate + 1 === playbackRates.length ? 0 : state.rate + 1 };
+      return {
+        ...state,
+        rate: state.rate + 1 === playbackRates.length ? 0 : state.rate + 1,
+      };
     }
 
     case "ended": {
@@ -63,7 +66,6 @@ export default function App() {
   );
 
   React.useEffect(() => {
-    console.log('state.rate', state.rate)
     audio.current.playbackRate = playbackRates[state.rate];
   }, [audio, state.rate]);
 
