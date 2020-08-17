@@ -6,24 +6,27 @@ export function Waveform({ transcript }) {
   const { audio, state } = useAppCtx();
   const ref = React.useRef();
 
-  const progress = (state.time / audio.duration) * 100;
+
+  console.log('state.duration', state.duration)
+
+  const progress = (state.time / state.duration) * 100;
 
   const waveforms = React.useMemo(() => {
     return transcript.word_timings.reduce((arr, el) => {
-      const start = (parseFloat(el[0].startTime) / audio.duration) * 100;
+      const start = (parseFloat(el[0].startTime) / state.duration) * 100;
       const endTime = parseFloat(el[el.length - 1].endTime);
-      const end = (endTime / audio.duration) * 100;
+      const end = (endTime / state.duration) * 100;
 
       return [...arr, { start, endTime, length: end - start }];
     }, []);
-  }, [transcript, audio.duration]);
+  }, [transcript, state.duration]);
 
   function handleMouseDown(e) {
     if (!ref.current) return;
 
     audio.currentTime =
       ((e.clientX - ref.current.offsetLeft) / ref.current.offsetWidth) *
-      audio.duration;
+      state.duration;
     audio.play();
   }
 

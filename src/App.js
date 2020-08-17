@@ -18,6 +18,7 @@ export const playbackRates = [0.5, 1, 1.5, 2];
 const initialState = {
   isPlaying: false,
   time: 0,
+  duration: 0,
   rate: 1,
 };
 
@@ -25,6 +26,9 @@ function reducer(state, { type, payload }) {
   switch (type) {
     case "setTime":
       return { ...state, time: payload };
+
+    case "setDuration":
+      return { ...state, duration: payload };
 
     case "pause":
       return { ...state, isPlaying: false };
@@ -83,6 +87,19 @@ export default function App() {
 
   React.useEffect(() => {
     function handleEvent() {
+      if (!isNaN(audio.current.duration)) {
+        dispatch({ type: "setDuration", payload: audio.current.duration });
+      }
+    }
+
+    const instance = audio.current;
+
+    instance.addEventListener("loadedmetadata", handleEvent);
+    return () => instance.removeEventListener("loadedmetadata", handleEvent);
+  }, [audio]);
+
+  React.useEffect(() => {
+    function handleEvent() {
       dispatch({ type: "ended" });
     }
 
@@ -90,7 +107,7 @@ export default function App() {
 
     instance.addEventListener("ended", handleEvent);
     return () => instance.removeEventListener("ended", handleEvent);
-  }, [audio, dispatch]);
+  }, [audio]);
 
   React.useEffect(() => {
     function handleEvent() {
@@ -101,7 +118,7 @@ export default function App() {
 
     instance.addEventListener("pause", handleEvent);
     return () => instance.removeEventListener("pause", handleEvent);
-  }, [audio, dispatch]);
+  }, [audio]);
 
   React.useEffect(() => {
     function handleEvent() {
@@ -112,7 +129,7 @@ export default function App() {
 
     instance.addEventListener("play", handleEvent);
     return () => instance.removeEventListener("play", handleEvent);
-  }, [audio, dispatch]);
+  }, [audio]);
 
   return (
     <AppCtx.Provider value={globalState}>
