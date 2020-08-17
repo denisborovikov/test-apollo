@@ -1,0 +1,102 @@
+.waveform {
+  height: 53px;
+  max-width: 940px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.waveform__participants::after,
+.waveform__playback::after {
+  border-top: 1px solid #dfe2e5;
+  content: " ";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 26px;
+}
+
+.waveform__participants {
+  position: relative;
+  padding-right: 20px;
+}
+
+.waveform__participants::before,
+.waveform__playback::before {
+  border-right: 1px solid #dfe2e5;
+  height: 10px;
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+}
+
+.waveform__participant {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.waveform__participant.you {
+  color: #8868e9;
+  margin: 8px 0 10px;
+}
+.waveform__participant.prospect {
+  color: #1a99f6;
+  bottom: 8px;
+}
+
+.waveform__playback {
+  position: relative;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.waveform__item {
+  position: absolute;
+  height: 25px;
+}
+
+.waveform__item.played {
+  background: repeating-linear-gradient(
+    90deg,
+    #b7c0ce 0px,
+    #b7c0ce 2px,
+    #fff,
+    #fff 3px
+  ) !important;
+}
+
+.waveform__item.you {
+  top: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    #8868e9 0px,
+    #8868e9 2px,
+    #fff,
+    #fff 3px
+  );
+}
+
+.waveform__item.prospect {
+  bottom: 0;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #1a99f6 0px,
+    #1a99f6 2px,
+    #fff,
+    #fff 3px
+  );
+}
+
+.waveform__progress {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  height: 1px;
+  margin-top: -1px;
+  background-color: #7e8fa5;
+  width: 50px;
+}

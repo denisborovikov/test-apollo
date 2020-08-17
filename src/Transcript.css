@@ -1,14 +1,29 @@
 .transcript {
   max-width: 940px;
-  margin: 0 auto;
+  margin: 20px auto 0;
+
+  border-top: 1px solid #dfe3e9;
 }
 
 .transcript-item {
-  padding: 24px;
+  padding: 24px 200px 24px 10px;
   display: flex;
   font-size: 13px;
   line-height: 17px;
 }
+
+.transcript-item.prospect  {
+  margin-left: 50px;
+}
+
+.transcript-item.prospect .transcript-item__time {
+  color: #d7563d;
+}
+
+.transcript-item.prospect .transcript-item__text {
+  border-color: #f4d5cf;
+}
+
 .transcript-item.current {
   background-color: #f3fafe;
 }

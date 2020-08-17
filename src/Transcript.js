@@ -1,19 +1,19 @@
 import React from "react";
-import "./transcript.css";
+import "./Transcript.css";
 import { useAppCtx } from "./context";
 import { formatTime } from "./utils";
 
-export function Transcript({ data }) {
+export function Transcript({ transcript }) {
   return (
     <div className="transcript">
-      {data.word_timings.map((d, i) => (
-        <TranscriptItem key={i} timings={d} />
+      {transcript.word_timings.map((d, i) => (
+        <TranscriptItem key={i} timings={d} prospect={i % 2 !== 0} />
       ))}
     </div>
   );
 }
 
-export function TranscriptItem({ timings }) {
+export function TranscriptItem({ timings, prospect }) {
   const { audio } = useAppCtx();
 
   function isCurrent({ startTime, endTime }) {
@@ -30,7 +30,7 @@ export function TranscriptItem({ timings }) {
 
   return (
     <div
-      className={`transcript-item ${
+      className={`transcript-item ${prospect ? "prospect" : ""} ${
         isCurrent({
           startTime: timings[0].startTime,
           endTime: timings[timings.length - 1].endTime,

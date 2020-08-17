@@ -4,6 +4,7 @@ import "./styles.css";
 import { Controls } from "./Controls";
 import { Transcript } from "./Transcript";
 import { Timer } from "./Timer";
+import { Waveform } from "./Waveform";
 import transcript from "./transcript.json";
 import { AppCtx } from "./context";
 
@@ -71,7 +72,7 @@ export default function App() {
 
   React.useEffect(() => {
     function handleEvent() {
-      dispatch({ type: "setTime", payload: audio.currentTime });
+      dispatch({ type: "setTime", payload: audio.current.currentTime });
     }
 
     const instance = audio.current;
@@ -118,7 +119,8 @@ export default function App() {
       <div className="App">
         <Controls />
         <Timer />
-        <Transcript data={transcript} />
+        <Waveform transcript={transcript} />
+        <Transcript transcript={transcript} />
       </div>
     </AppCtx.Provider>
   );
