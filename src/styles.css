@@ -1,4 +1,5 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+html {
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #556c86;
 }

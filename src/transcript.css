@@ -1,0 +1,35 @@
+.transcript {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.transcript-item {
+  padding: 24px;
+  display: flex;
+  font-size: 13px;
+  line-height: 17px;
+}
+.transcript-item.current {
+  background-color: #f3fafe;
+}
+
+
+.transcript-item__time {
+  color: #1a99f6;
+}
+
+.transcript-item__text {
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 2px solid #c3ddef;
+}
+
+.transcript-item .word:hover {
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.transcript-item .current,
+.transcript-item .word:hover {
+  background-color: rgba(26, 153, 246, 0.25);
+}

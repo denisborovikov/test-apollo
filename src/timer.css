@@ -1,0 +1,20 @@
+.timer {
+  max-width: 940px;
+  margin: 24px auto;
+}
+
+.timer__container {
+  display: inline-block;
+  background-color: #eff3f6;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.time__current {
+  font-weight: bold;
+  color: #354053;
+}
+
+.timer__total {
+  color: #7e8fa5;
+}

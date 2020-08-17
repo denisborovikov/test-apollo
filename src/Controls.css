@@ -1,13 +1,46 @@
 .controls {
   background-color: #eff3f6;
+}
+
+
+.controls__container {
+  max-width: 940px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
   padding: 12px 24px;
 }
 
-.rew {
+
+.controls__control {
+  color: #566c85;
+  cursor: pointer;
 }
+
+.controls__control:hover {
+  color: #279BF3;
+}
+
+.rew {
+
+}
+
 
 .ff {
+  transform: scaleX(-1);
+
 }
 
-.play {
+.controls__play {
+  margin: 0 24px;
+  cursor: pointer;
+}
+
+.controls__timestamp{
+  font-size: 12px;
+  margin-left: 20px;
+  border: 1px solid #d0d9e2;
+  background-color: #fff;;
+  border-radius: 12px;
+  padding: 2px 8px;
 }
