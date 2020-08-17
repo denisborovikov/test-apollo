@@ -9,37 +9,21 @@ export function Controls() {
 
   const { isPlaying, rate } = state;
 
-  function handlePlay() {
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
-  }
-
-  function rewind() {
-    audio.currentTime -= 5;
-  }
-
-  function fastForward() {
-    audio.currentTime += 5;
-  }
-
   return (
     <div className="controls">
       <div className="controls__container">
         <div className="controls__control rew">
-          <Rewind onClick={rewind} />
+          <Rewind onClick={() => audio.currentTime -= 10} />
         </div>
         <div className="controls__play">
           {isPlaying ? (
-            <Pause onClick={handlePlay} />
+            <Pause onClick={() => audio.pause()} />
           ) : (
-            <Play onClick={handlePlay} />
+            <Play onClick={() => audio.play()} />
           )}
         </div>
         <div className="controls__control ff">
-          <Rewind onClick={fastForward} />
+          <Rewind onClick={() => audio.currentTime += 10} />
         </div>
         <div
           className="controls__timestamp"
