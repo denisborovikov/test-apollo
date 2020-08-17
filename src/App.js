@@ -63,7 +63,7 @@ export default function App() {
       state,
       dispatch,
     }),
-    [audio.current, state, dispatch]
+    [state, dispatch]
   );
 
   React.useEffect(() => {
@@ -75,17 +75,21 @@ export default function App() {
       dispatch({ type: "setTime", payload: audio.currentTime });
     }
 
-    audio.current.addEventListener("timeupdate", setTimestamp);
-    return () => audio.current.removeEventListener("timeupdate", setTimestamp);
-  }, [audio, dispatch]);
+    const instance = audio.current;
+
+    instance.addEventListener("timeupdate", setTimestamp);
+    return () => instance.removeEventListener("timeupdate", setTimestamp);
+  }, [dispatch]);
 
   React.useEffect(() => {
     function setEnded() {
       dispatch({ type: "ended" });
     }
 
-    audio.current.addEventListener("ended", setEnded);
-    return () => audio.current.removeEventListener("timeupdate", setEnded);
+    const instance = audio.current;
+
+    instance.addEventListener("ended", setEnded);
+    return () => instance.removeEventListener("timeupdate", setEnded);
   }, [audio, dispatch]);
 
   return (
