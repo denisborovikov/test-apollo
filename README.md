@@ -1,2 +1,2 @@
 # test-apollo
-Created with CodeSandbox
+Demo on [CodeSandbox](https://codesandbox.io/s/github/denisborovikov/test-apollo).
