@@ -2,6 +2,7 @@ import React from "react";
 import "./Controls.css";
 import { Pause, Play, Rewind } from "./Icons";
 import { useAppCtx } from "./context";
+import { playbackRates } from "./App";
 
 export function Controls() {
   const { audio, state, dispatch } = useAppCtx();
@@ -42,7 +43,12 @@ export function Controls() {
         <div className="controls__control ff">
           <Rewind onClick={fastForward} />
         </div>
-        <div className="controls__timestamp">{rate.toFixed(1)}x</div>
+        <div
+          className="controls__timestamp"
+          onClick={() => dispatch({ type: "cycleRate" })}
+        >
+          {playbackRates[rate].toFixed(1)}x
+        </div>
       </div>
     </div>
   );
