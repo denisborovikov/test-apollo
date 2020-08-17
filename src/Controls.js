@@ -11,10 +11,8 @@ export function Controls() {
 
   function handlePlay() {
     if (isPlaying) {
-      dispatch({ type: "pause" });
       audio.pause();
     } else {
-      dispatch({ type: "play" });
       audio.play();
     }
   }

@@ -70,25 +70,47 @@ export default function App() {
   }, [audio, state.rate]);
 
   React.useEffect(() => {
-    function setTimestamp() {
+    function handleEvent() {
       dispatch({ type: "setTime", payload: audio.currentTime });
     }
 
     const instance = audio.current;
 
-    instance.addEventListener("timeupdate", setTimestamp);
-    return () => instance.removeEventListener("timeupdate", setTimestamp);
+    instance.addEventListener("timeupdate", handleEvent);
+    return () => instance.removeEventListener("timeupdate", handleEvent);
   }, [dispatch]);
 
   React.useEffect(() => {
-    function setEnded() {
+    function handleEvent() {
       dispatch({ type: "ended" });
     }
 
     const instance = audio.current;
 
-    instance.addEventListener("ended", setEnded);
-    return () => instance.removeEventListener("timeupdate", setEnded);
+    instance.addEventListener("ended", handleEvent);
+    return () => instance.removeEventListener("ended", handleEvent);
+  }, [audio, dispatch]);
+
+  React.useEffect(() => {
+    function handleEvent() {
+      dispatch({ type: "pause" });
+    }
+
+    const instance = audio.current;
+
+    instance.addEventListener("pause", handleEvent);
+    return () => instance.removeEventListener("pause", handleEvent);
+  }, [audio, dispatch]);
+
+  React.useEffect(() => {
+    function handleEvent() {
+      dispatch({ type: "play" });
+    }
+
+    const instance = audio.current;
+
+    instance.addEventListener("play", handleEvent);
+    return () => instance.removeEventListener("play", handleEvent);
   }, [audio, dispatch]);
 
   return (

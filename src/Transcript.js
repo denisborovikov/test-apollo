@@ -14,7 +14,7 @@ export function Transcript({ data }) {
 }
 
 export function TranscriptItem({ timings }) {
-  const { audio, dispatch } = useAppCtx();
+  const { audio } = useAppCtx();
 
   function isCurrent({ startTime, endTime }) {
     return (
@@ -26,7 +26,6 @@ export function TranscriptItem({ timings }) {
   function jumpToWord(startTime) {
     audio.currentTime = parseFloat(startTime);
     audio.play();
-    dispatch({ type: "play" });
   }
 
   return (
